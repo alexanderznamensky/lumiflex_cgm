@@ -1,0 +1,75 @@
+{
+  "title": "LumiFlex CGM",
+  "config": {
+    "flow_title": "LumiFlex CGM",
+    "step": {
+      "user": {
+        "title": "LumiFlex CGM",
+        "description": "Configure LumiFlex Cloud credentials, polling and optional Nightscout upload.",
+        "data": {
+          "username": "LumiFlex login",
+          "password": "LumiFlex password",
+          "update_interval": "Update interval in minutes (0 disables polling)",
+          "nightscout_url": "Nightscout URL",
+          "nightscout_api_secret": "Nightscout API secret"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure LumiFlex CGM",
+        "description": "Update LumiFlex credentials for the same account.",
+        "data": {
+          "username": "LumiFlex login",
+          "password": "LumiFlex password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect or login to LumiFlex Cloud.",
+      "required_with_url": "Nightscout API secret is required when Nightscout URL is set.",
+      "required_with_secret": "Nightscout URL is required when API secret is set.",
+      "unknown": "Unexpected error.",
+      "invalid_update_interval": "Update interval must be an integer from 0 to 60."
+    },
+    "abort": {
+      "already_configured": "This LumiFlex account is already configured.",
+      "unique_id_mismatch": "The LumiFlex account cannot be changed during reconfiguration. Remove and add the integration again to use another account."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "LumiFlex CGM options",
+        "description": "Change polling and Nightscout upload settings.",
+        "data": {
+          "update_interval": "Update interval in minutes (0 disables polling)",
+          "nightscout_url": "Nightscout URL",
+          "nightscout_api_secret": "Nightscout API secret"
+        }
+      }
+    },
+    "error": {
+      "required_with_url": "Nightscout API secret is required when Nightscout URL is set.",
+      "required_with_secret": "Nightscout URL is required when API secret is set.",
+      "invalid_update_interval": "Update interval must be an integer from 0 to 60."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Glucose"
+      },
+      "minutes_since_update": {
+        "name": "Minutes since update"
+      },
+      "trend": {
+        "name": "Trend"
+      },
+      "patient": {
+        "name": "Patient"
+      },
+      "nightscout_status": {
+        "name": "Nightscout status"
+      }
+    }
+  }
+}

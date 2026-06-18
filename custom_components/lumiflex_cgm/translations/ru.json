@@ -1,0 +1,75 @@
+{
+  "title": "LumiFlex CGM",
+  "config": {
+    "flow_title": "LumiFlex CGM",
+    "step": {
+      "user": {
+        "title": "LumiFlex CGM",
+        "description": "Настройка доступа к LumiFlex Cloud, интервала обновления и необязательной отправки в Nightscout.",
+        "data": {
+          "username": "Логин LumiFlex",
+          "password": "Пароль LumiFlex",
+          "update_interval": "Время обновления в минутах (0 — выключить опрос)",
+          "nightscout_url": "URL Nightscout",
+          "nightscout_api_secret": "API secret Nightscout"
+        }
+      },
+      "reconfigure": {
+        "title": "Реконфигурация LumiFlex CGM",
+        "description": "Обновление логина/пароля LumiFlex для того же аккаунта.",
+        "data": {
+          "username": "Логин LumiFlex",
+          "password": "Пароль LumiFlex"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться или авторизоваться в LumiFlex Cloud.",
+      "required_with_url": "Если указан URL Nightscout, нужно указать API secret.",
+      "required_with_secret": "Если указан API secret Nightscout, нужно указать URL Nightscout.",
+      "unknown": "Неизвестная ошибка.",
+      "invalid_update_interval": "Период опроса должен быть целым числом от 0 до 60."
+    },
+    "abort": {
+      "already_configured": "Этот аккаунт LumiFlex уже настроен.",
+      "unique_id_mismatch": "Нельзя сменить аккаунт LumiFlex при реконфигурации. Для другого аккаунта удалите и добавьте интеграцию заново."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Параметры LumiFlex CGM",
+        "description": "Изменение интервала опроса и настроек отправки в Nightscout.",
+        "data": {
+          "update_interval": "Время обновления в минутах (0 — выключить опрос)",
+          "nightscout_url": "URL Nightscout",
+          "nightscout_api_secret": "API secret Nightscout"
+        }
+      }
+    },
+    "error": {
+      "required_with_url": "Если указан URL Nightscout, нужно указать API secret.",
+      "required_with_secret": "Если указан API secret Nightscout, нужно указать URL Nightscout.",
+      "invalid_update_interval": "Период опроса должен быть целым числом от 0 до 60."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "glucose": {
+        "name": "Глюкоза"
+      },
+      "minutes_since_update": {
+        "name": "Минут с обновления"
+      },
+      "trend": {
+        "name": "Тренд"
+      },
+      "patient": {
+        "name": "Пациент"
+      },
+      "nightscout_status": {
+        "name": "Статус Nightscout"
+      }
+    }
+  }
+}
