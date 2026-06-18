@@ -69,6 +69,9 @@
       },
       "nightscout_status": {
         "name": "Nightscout status"
+      },
+      "sensor_days_left": {
+        "name": "Sensor days left"
       }
     }
   }

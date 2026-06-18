@@ -1,7 +1,9 @@
 {
   "domain": "lumiflex_cgm",
   "name": "LumiFlex CGM",
-  "codeowners": ["@alexanderznamensky"],
+  "codeowners": [
+    "@alexanderznamensky"
+  ],
   "config_flow": true,
   "dependencies": [],
   "description": "https://cloud.lumiflex.ru/",
@@ -9,5 +11,5 @@
   "issue_tracker": "https://github.com/alexanderznamensky/lumiflex_cgm/issues",
   "iot_class": "cloud_polling",
   "requirements": [],
-  "version": "0.1.2"
+  "version": "0.1.3"
 }

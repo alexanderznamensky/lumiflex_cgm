@@ -26,6 +26,7 @@ async def async_setup_entry(
         [
             LumiFlexGlucoseSensor(coordinator),
             LumiFlexMinutesSinceUpdateSensor(coordinator),
+            LumiFlexSensorDaysLeftSensor(coordinator),
             LumiFlexTrendSensor(coordinator),
             LumiFlexPatientSensor(coordinator),
             LumiFlexNightscoutStatusSensor(coordinator),
@@ -103,6 +104,35 @@ class LumiFlexMinutesSinceUpdateSensor(LumiFlexBaseSensor):
     @property
     def native_value(self) -> int | None:
         return (self.coordinator.data or {}).get("minutes_since_update")
+
+
+class LumiFlexSensorDaysLeftSensor(LumiFlexBaseSensor):
+    """Days left before sensor replacement."""
+
+    _attr_native_unit_of_measurement = "days"
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_icon = "mdi:calendar-clock"
+
+    def __init__(self, coordinator: LumiFlexCoordinator) -> None:
+        super().__init__(coordinator, "sensor_days_left", "Sensor days left")
+
+    @property
+    def native_value(self) -> int | None:
+        return (self.coordinator.data or {}).get("sensor_days_left")
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        data = self.coordinator.data or {}
+        return {
+            "sensor_start_time": data.get("sensor_start_time"),
+            "sensor_lifetime_days": data.get("sensor_lifetime_days"),
+            "sensor_expiration_time_iso_local": data.get("sensor_expiration_time_iso_local"),
+            "sensor_expiration_time_iso_utc": data.get("sensor_expiration_time_iso_utc"),
+            "sensor_expired": data.get("sensor_expired"),
+            "sensor_id": data.get("sensor_id"),
+            "device_sn": data.get("device_sn"),
+            "rpp_id": data.get("rpp_id"),
+        }
 
 
 class LumiFlexTrendSensor(LumiFlexBaseSensor):
